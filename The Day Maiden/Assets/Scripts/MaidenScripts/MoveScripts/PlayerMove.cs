@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-   [SerializeField] private float rotateSpeed = 75f;
    [SerializeField] public float move = 10f;
-   [SerializeField] public float moveSpeed = 10f;
 
     private Rigidbody _rb;
     private PlayerInput playerInput;
@@ -26,9 +24,12 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     private void MoveLogic()
     {
-        Vector3 rotation = Vector3.up * playerInput.hInput;
-        Quaternion angleRot = Quaternion.Euler(rotation * rotateSpeed * Time.fixedDeltaTime);
-        _rb.MovePosition(this.transform.position + this.transform.forward * playerInput.vInput * move * Time.fixedDeltaTime);
-        _rb.MoveRotation(_rb.rotation * angleRot);
+        _rb.MovePosition(_rb.position + playerInput.movenemtDirection * move * Time.fixedDeltaTime);
+
+        if (playerInput.movenemtDirection != Vector3.zero)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(playerInput.movenemtDirection);
+            _rb.MoveRotation(newRotation);
+        }
     }
 }

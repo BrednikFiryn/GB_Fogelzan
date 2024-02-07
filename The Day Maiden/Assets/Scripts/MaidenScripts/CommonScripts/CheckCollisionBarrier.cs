@@ -3,6 +3,7 @@ using UnityEngine;
 public class CheckCollisionBarrier : MonoBehaviour
 {
     [SerializeField] private float moveFastSpeed = 10f;
+    [SerializeField] private float moveSpeed = 10f;
 
     private BarrierCollision barrierCollision;
     private PlayerMove playerMove;
@@ -41,6 +42,6 @@ public class CheckCollisionBarrier : MonoBehaviour
         }
 
         else
-            playerMove.move = playerMove.moveSpeed;
+            playerMove.move = moveSpeed;
     }
 }

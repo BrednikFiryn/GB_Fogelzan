@@ -7,13 +7,11 @@ public class ConditionStorage : MonoBehaviour
     [SerializeField] private GameObject spirit;
 
     private BarrierCollision barrierCollision;
-    private GroundCheck groundCheck;
 
 
     private void Awake()
     {
         barrierCollision = FindObjectOfType<BarrierCollision>();
-        groundCheck = FindObjectOfType<GroundCheck>();
     }
 
     private void Update()
@@ -26,7 +24,7 @@ public class ConditionStorage : MonoBehaviour
     /// </summary>
     private void ConditionCheck()
     {
-        if (!groundCheck.isGrounded || Input.GetKey(KeyCode.LeftShift) && !barrierCollision.stop)
+        if (Input.GetKey(KeyCode.LeftShift) && !barrierCollision.stop)
         {
             matter.SetActive(false);
             spirit.SetActive(true);

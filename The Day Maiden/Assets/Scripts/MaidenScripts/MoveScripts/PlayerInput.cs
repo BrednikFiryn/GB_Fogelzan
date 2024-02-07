@@ -4,6 +4,7 @@ public class PlayerInput : MonoBehaviour
 {
      [HideInInspector] public float vInput;
      [HideInInspector] public float hInput;
+     [HideInInspector] public Vector3 movenemtDirection;
 
     private void Update()
     {
@@ -14,5 +15,6 @@ public class PlayerInput : MonoBehaviour
     {
         vInput = Input.GetAxis("Vertical");
         hInput = Input.GetAxis("Horizontal");
+        movenemtDirection = new Vector3(hInput, 0f, vInput).normalized;
     }
 }

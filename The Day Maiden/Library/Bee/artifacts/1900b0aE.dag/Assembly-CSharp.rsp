@@ -365,10 +365,9 @@
 "Assets/Scripts/MaidenScripts/CommonScripts/BarrierCollision.cs"
 "Assets/Scripts/MaidenScripts/CommonScripts/CheckCollisionBarrier.cs"
 "Assets/Scripts/MaidenScripts/CommonScripts/ConditionStorage.cs"
-"Assets/Scripts/MaidenScripts/CommonScripts/GroundCheck.cs"
 "Assets/Scripts/MaidenScripts/MoveScripts/PlayerInput.cs"
-"Assets/Scripts/MaidenScripts/MoveScripts/PlayerJump.cs"
 "Assets/Scripts/MaidenScripts/MoveScripts/PlayerMove.cs"
+"Assets/Scripts/MaidenScripts/MoveScripts/PlayerRotation.cs"
 -langversion:9.0
 
 /deterministic
