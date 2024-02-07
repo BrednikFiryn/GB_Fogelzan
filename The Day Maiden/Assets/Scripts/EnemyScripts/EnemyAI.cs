@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     /// <summary>
-    /// Перемещение врага в точку.
+    /// Перемещение врага к точке.
     /// </summary>
     public void TargetOfEnemyAttack()
     {

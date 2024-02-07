@@ -21,6 +21,9 @@ public class ConditionStorage : MonoBehaviour
         ConditionCheck();
     }
 
+    /// <summary>
+    /// Проверка персонаж на земле или нет и изменение состояния.
+    /// </summary>
     private void ConditionCheck()
     {
         if (!groundCheck.isGrounded || Input.GetKey(KeyCode.LeftShift) && !barrierCollision.stop)

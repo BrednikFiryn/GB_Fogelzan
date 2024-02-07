@@ -10,7 +10,7 @@ public class PlayerJump : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        groundCheck = FindAnyObjectByType<GroundCheck>();
+        groundCheck = FindObjectOfType<GroundCheck>();
     }
 
     private void FixedUpdate()
