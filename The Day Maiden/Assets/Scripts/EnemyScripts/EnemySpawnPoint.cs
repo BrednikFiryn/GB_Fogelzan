@@ -1,42 +1,46 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
+    private bool enemySpawn = true;
     private GameObject[] spawnPoints;
+    private int countEnemy = 0;
+    private EnemyAssignmentComponent enemyAssignmentComponent;
 
-    [HideInInspector] public GameObject[] enemies;
+    public float enemySpawnTime;
 
     private void Awake()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemyAssignmentComponent = FindObjectOfType<EnemyAssignmentComponent>();
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
     }
 
     private void Start()
     {
-        EnemyAssignPoint();
+        StartCoroutine(EnemSpawnPointRandom());
     }
 
-    /// <summary>
-    /// Спавн врагов на точках.
-    /// </summary>
-    public void EnemyAssignPoint()
+    private IEnumerator EnemSpawnPointRandom()
     {
-        int enemyCount = enemies.Length;
-        int spawnPointCount = spawnPoints.Length;
-
-        for (int i = 0; i < enemyCount; i++)
+        while (enemySpawn && countEnemy < enemyAssignmentComponent.enemies.Length)
         {
-            int spawnindex = i % spawnPointCount;
-            Transform spawnPointTransform = spawnPoints[spawnindex].transform;
+            GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            Transform spawnPointTransform = spawnPoint.transform;
+            NavMeshAgent navMeshAgent = enemyAssignmentComponent.enemies[countEnemy];
 
-            enemies[i].transform.position = spawnPointTransform.position;
+            navMeshAgent.gameObject.SetActive(true);
+            navMeshAgent.transform.position = spawnPointTransform.position;
 
-            if (enemies[i].TryGetComponent(out NavMeshAgent navMeshAgent))
+            if (navMeshAgent != null)
             {
                 navMeshAgent.Warp(spawnPointTransform.position);
+                navMeshAgent.gameObject.AddComponent<EnemyAI>();
             }
+
+            countEnemy++;
+            yield return new WaitForSeconds(enemySpawnTime);
         }
     }
 }

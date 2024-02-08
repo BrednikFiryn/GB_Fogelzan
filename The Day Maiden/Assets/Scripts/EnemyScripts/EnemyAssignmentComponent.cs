@@ -1,27 +1,24 @@
+using UnityEngine.AI;
 using UnityEngine;
 
 public class EnemyAssignmentComponent : MonoBehaviour
 {
-    private GameObject[] enemies;
+    [HideInInspector] public NavMeshAgent[] enemies;
 
     private void Start()
     {
         OverlayEnemyTarget();
     }
 
-    /// <summary>
-    /// Всем объектам с тэгом "Enemy" назначается компонент EnemyTargetMouse
-    /// </summary>
     private void OverlayEnemyTarget()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = FindObjectsOfType<NavMeshAgent>();
 
-        foreach (GameObject enemy in enemies)
+        foreach (NavMeshAgent enemy in enemies)
         {
             if (enemy != null)
             {
-                enemy.AddComponent<EnemyTargetMouse>();
-                enemy.AddComponent<EnemyAI>();
+                enemy.gameObject.AddComponent<EnemyTargetMouse>();
             }
         }
     }

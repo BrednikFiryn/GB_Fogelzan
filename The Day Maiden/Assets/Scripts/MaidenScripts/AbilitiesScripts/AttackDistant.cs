@@ -21,9 +21,6 @@ public class AttackDistant : MonoBehaviour
         AttackCheck();
     }
 
-    /// <summary>
-    /// Атака по выбраному противнику.
-    /// </summary>
     private void AttackCheck()
     {
         if (Time.time < attackTime + attackDistantDelay) return;

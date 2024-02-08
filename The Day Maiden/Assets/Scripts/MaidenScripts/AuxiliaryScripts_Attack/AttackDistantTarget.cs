@@ -3,6 +3,7 @@ using UnityEngine;
 public class AttackDistantTarget : MonoBehaviour
 {
     [SerializeField] private Camera camera;
+
     [HideInInspector] public GameObject target;
 
     void Update()
@@ -10,9 +11,6 @@ public class AttackDistantTarget : MonoBehaviour
         PositionCheck();
     }
 
-    /// <summary>
-    /// Выбор цели с помощью мыши.
-    /// </summary>
     private void PositionCheck()
     {
         if (Input.GetMouseButtonDown(0))
