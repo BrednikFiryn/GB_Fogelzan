@@ -4,13 +4,15 @@ using UnityEngine;
 public class EnemyAssignmentComponent : MonoBehaviour
 {
     [HideInInspector] public NavMeshAgent[] enemies;
+    [HideInInspector] public int enemiesCount;
 
     private void Start()
     {
         OverlayEnemyTarget();
+        enemiesCount = OverlayEnemyTarget();
     }
 
-    private void OverlayEnemyTarget()
+    private int OverlayEnemyTarget()
     {
         enemies = FindObjectsOfType<NavMeshAgent>();
 
@@ -21,5 +23,7 @@ public class EnemyAssignmentComponent : MonoBehaviour
                 enemy.gameObject.AddComponent<EnemyTargetMouse>();
             }
         }
+
+        return enemiesCount = enemies.Length;
     }
 }

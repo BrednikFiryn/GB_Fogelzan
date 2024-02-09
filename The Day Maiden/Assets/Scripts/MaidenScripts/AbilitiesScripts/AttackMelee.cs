@@ -1,19 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackMelee : MonoBehaviour
 {
-
-    [SerializeField] private float attackDistantDelay;
+    [SerializeField] private float attackMeleeDelay;
+    [SerializeField] private Image image;
 
     private Animator anim;
-    private Collider collider;
-    private float attackTime = float.MinValue;
-
-
+    private Collider col;
+    private float lastAttackTime = float.MinValue;
 
     private void Awake()
     {
-        collider = GetComponent<Collider>();
+        col = GetComponent<Collider>();
         anim = GetComponent<Animator>();
     }
 
@@ -22,21 +21,23 @@ public class AttackMelee : MonoBehaviour
         AttackMeleeCheck();
     }
 
-    /// <summary>
-    /// Ѕлижн€€ атака по нажатию кнопки(1)
-    /// </summary>
     private void AttackMeleeCheck()
     {
-        if (Time.time < attackTime + attackDistantDelay) return;
+        image.fillAmount = (Time.time - lastAttackTime) / attackMeleeDelay;
+        if (Time.time < lastAttackTime + attackMeleeDelay)
+        return;
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             anim.SetTrigger("Attack");
-            collider.enabled = true;
-            attackTime = Time.time;
+            col.enabled = true;
+            lastAttackTime = Time.time;
+            image.fillAmount = 0f;
         }
 
         else
-            collider.enabled = false;
+        {
+            col.enabled = false;
+        }
     }
 }

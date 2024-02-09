@@ -18,9 +18,6 @@ public class EnemyAI : MonoBehaviour
         TargetOfEnemyAttack();
     }
 
-    /// <summary>
-    /// Перемещение врага к точке.
-    /// </summary>
     public void TargetOfEnemyAttack()
     {
         agent.speed += 5;

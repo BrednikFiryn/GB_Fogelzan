@@ -1,15 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackDistant : MonoBehaviour
 {
-
     [SerializeField] private float attackDistantDelay;
     [SerializeField] private GameObject fireBall;
-    [SerializeField] private ParticleSystem particleSystem;
+    [SerializeField] private ParticleSystem partSystem;
+    [SerializeField] private Image image;
 
     private AttackDistantTarget attackDistantTarget;
-
-    private float attackTime = float.MinValue;
+    private float lastAttackTime = float.MinValue;
 
     private void Start()
     {
@@ -23,16 +23,18 @@ public class AttackDistant : MonoBehaviour
 
     private void AttackCheck()
     {
-        if (Time.time < attackTime + attackDistantDelay) return;
+        image.fillAmount = (Time.time - lastAttackTime) / attackDistantDelay;
+        if (Time.time < lastAttackTime + attackDistantDelay) return;
 
         fireBall.transform.position = gameObject.GetComponent<AttackDistant>().transform.position;
 
         if (Input.GetKeyDown(KeyCode.Mouse2) && attackDistantTarget.target != null)
         {
             fireBall.transform.position = attackDistantTarget.target.transform.position;
-            particleSystem.Play();
+            partSystem.Play();
 
-            attackTime = Time.time;
+            lastAttackTime = Time.time;
+            image.fillAmount = 0f;
         }
 
         else if (attackDistantTarget.target == false)

@@ -27,8 +27,8 @@ public class EnemySpawnPoint : MonoBehaviour
         while (enemySpawn && countEnemy < enemyAssignmentComponent.enemies.Length)
         {
             GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            Transform spawnPointTransform = spawnPoint.transform;
             NavMeshAgent navMeshAgent = enemyAssignmentComponent.enemies[countEnemy];
+            Transform spawnPointTransform = spawnPoint.transform;
 
             navMeshAgent.gameObject.SetActive(true);
             navMeshAgent.transform.position = spawnPointTransform.position;
