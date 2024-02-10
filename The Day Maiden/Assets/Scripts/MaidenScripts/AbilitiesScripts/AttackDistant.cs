@@ -28,7 +28,7 @@ public class AttackDistant : MonoBehaviour
 
         fireBall.transform.position = gameObject.GetComponent<AttackDistant>().transform.position;
 
-        if (Input.GetKeyDown(KeyCode.Mouse2) && attackDistantTarget.target != null)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && attackDistantTarget.target != null)
         {
             fireBall.transform.position = attackDistantTarget.target.transform.position;
             partSystem.Play();
@@ -37,7 +37,7 @@ public class AttackDistant : MonoBehaviour
             image.fillAmount = 0f;
         }
 
-        else if (attackDistantTarget.target == false)
+        else if (attackDistantTarget.target == enabled)
         {
             fireBall.transform.position = gameObject.transform.position;
         }

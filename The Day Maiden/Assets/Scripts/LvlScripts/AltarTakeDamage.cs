@@ -3,10 +3,11 @@ using UnityEngine.UI;
 
 public class AltarTakeDamage : MonoBehaviour
 {
-    [SerializeField] private float altarHealth = 1f;
+    [HideInInspector] public float altarHealth = 1f;
     [SerializeField] private float EnemyDamage;
     [SerializeField] private GameObject altarDeath;
     [SerializeField] private GameObject altarLife;
+
     [SerializeField] private Image image;
 
     private void OnTriggerEnter(Collider other)

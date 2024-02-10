@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class TimeControl : MonoBehaviour
 {
-   public void TimeStopPlay()
+    private void Start()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void TimeStopPlay()
     {
         if (Time.timeScale == 1)
         {

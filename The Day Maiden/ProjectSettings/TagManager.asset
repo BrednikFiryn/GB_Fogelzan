@@ -11,6 +11,7 @@ TagManager:
   - SpawnPoint
   - EnemyTarget
   - EnemyCount
+  - Interface
   layers:
   - Default
   - TransparentFX

@@ -27,7 +27,7 @@ public class AttackMelee : MonoBehaviour
         if (Time.time < lastAttackTime + attackMeleeDelay)
         return;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !Input.GetKey(KeyCode.LeftShift))
         {
             anim.SetTrigger("Attack");
             col.enabled = true;

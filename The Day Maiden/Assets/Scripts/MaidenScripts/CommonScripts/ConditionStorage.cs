@@ -5,14 +5,6 @@ public class ConditionStorage : MonoBehaviour
     [SerializeField] private GameObject scythe;
     [SerializeField] private GameObject spirit;
 
-    private BarrierCollision barrierCollision;
-
-
-    private void Awake()
-    {
-        barrierCollision = FindObjectOfType<BarrierCollision>();
-    }
-
     private void Update()
     {
         ConditionCheck();
