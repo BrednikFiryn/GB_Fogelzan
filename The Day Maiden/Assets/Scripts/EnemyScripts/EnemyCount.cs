@@ -19,6 +19,6 @@ public class EnemyCount : MonoBehaviour
 
     private void EnemyCounter()
     {
-        text.text = "" + enemyAssignment.enemiesCount;
+        text.text = enemyAssignment.enemiesCount.ToString();
     }
 }

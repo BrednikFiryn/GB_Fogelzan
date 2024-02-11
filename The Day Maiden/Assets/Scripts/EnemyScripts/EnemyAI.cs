@@ -4,7 +4,6 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     private NavMeshAgent agent;
-
     [HideInInspector]public GameObject enemyTarget;
 
     private void Awake()

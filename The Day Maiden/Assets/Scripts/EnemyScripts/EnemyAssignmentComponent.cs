@@ -8,7 +8,6 @@ public class EnemyAssignmentComponent : MonoBehaviour
 
     private void Start()
     {
-        OverlayEnemyTarget();
         enemiesCount = OverlayEnemyTarget();
     }
 
