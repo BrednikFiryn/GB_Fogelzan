@@ -46,7 +46,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 }
-[System.Serializable] public class SoundSettingsData
+
+[System.Serializable]
+public class SoundSettingsData
 {
     public float volume;
 

@@ -4,6 +4,12 @@ public class ConditionStorage : MonoBehaviour
 {
     [SerializeField] private GameObject scythe;
     [SerializeField] private GameObject spirit;
+    [SerializeField] private Renderer rend;
+
+    private void Awake()
+    {
+        rend = scythe.GetComponent<Renderer>();
+    }
 
     private void Update()
     {
@@ -15,13 +21,13 @@ public class ConditionStorage : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             spirit.SetActive(true);
-            scythe.GetComponent<Renderer>().enabled = false;
+            rend.enabled = false;
         }
 
         else
         {
             spirit.SetActive(false);
-            scythe.GetComponent<Renderer>().enabled = true;
+            rend.enabled = true;
         }
     }
 }
